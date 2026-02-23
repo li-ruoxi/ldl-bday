@@ -121,35 +121,50 @@
     <audio id="wishAudio" src="voice_message.m4a"></audio>
 
     <script>
-        function startExperience() {
-            const overlay = document.getElementById('overlay');
-            const mainContent = document.getElementById('mainContent');
-            const bgAudio = document.getElementById('bgAudio');
-
-            overlay.style.opacity = '0';
-            setTimeout(() => {
-                overlay.style.display = 'none';
-                mainContent.style.display = 'block';
-                setTimeout(() => mainContent.style.opacity = '1', 50);
-                bgAudio.play().catch(e => console.log("Audio play blocked", e));
-            }, 800);
-        }
-
-        const candleBtn = document.getElementById('candleBtn');
-        const flame = document.getElementById('flame');
-        const wishAudio = document.getElementById('wishAudio');
+    function startExperience() {
+        const overlay = document.getElementById('overlay');
+        const mainContent = document.getElementById('mainContent');
         const bgAudio = document.getElementById('bgAudio');
-        let blown = false;
 
-        candleBtn.addEventListener('click', () => {
-            if (!blown) {
-                flame.style.display = 'none';
-                blown = true;
-                bgAudio.volume = 0.2; // 调小背景音
-                wishAudio.play();     // 播放语音
-                document.getElementById('hintText').innerText = "愿望一定会实现！🎁";
-            }
-        });
-    </script>
+        overlay.style.opacity = '0';
+        setTimeout(() => {
+            overlay.style.display = 'none';
+            mainContent.style.display = 'block';
+            setTimeout(() => mainContent.style.opacity = '1', 50);
+            
+            // 启动背景音乐（循环播放）
+            bgAudio.play().catch(e => console.log("播放被拦截:", e));
+        }, 800);
+    }
+
+    const candleBtn = document.getElementById('candleBtn');
+    const flame = document.getElementById('flame');
+    const wishAudio = document.getElementById('wishAudio');
+    const bgAudio = document.getElementById('bgAudio');
+    let blown = false;
+
+    candleBtn.addEventListener('click', () => {
+        if (!blown) {
+            // 1. 熄灭蜡烛
+            flame.style.display = 'none';
+            blown = true;
+            
+            // 2. 停止背景音乐
+            bgAudio.pause();
+            bgAudio.currentTime = 0; // 将背景音进度归零
+            
+            // 3. 播放你的语音消息
+            wishAudio.play();
+            
+            // 4. 修改页面上的提示文字
+            document.getElementById('hintText').innerText = "愿望一定会实现！🎁";
+
+            // 5. 弹出文字弹窗（保持原来的样子）
+            setTimeout(() => {
+                alert("✨ 愿望已许下！\n\n礼物在路上了，等我们见面！🎁");
+            }, 500); // 稍微延迟一下弹出，让画面先生效
+        }
+    });
+</script>
 </body>
 </html>
