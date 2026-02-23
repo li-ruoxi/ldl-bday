@@ -1,162 +1,155 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐！</title>
+    <style>
+        :root {
+            --bg-color: #fff0f5;
+            --cake-color: #f3b071;
+            --icing-color: #ffffff;
+            --strawberry-color: #ff4757;
+        }
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="zh-CN">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>\uc0\u29983 \u26085 \u24555 \u20048 \u65281 </title>\
-    <style>\
-        :root \{\
-            --bg-color: #fff0f5;\
-            --cake-color: #f3b071;\
-            --icing-color: #ffffff;\
-            --strawberry-color: #ff4757;\
-        \}\
-\
-        body, html \{\
-            margin: 0;\
-            padding: 0;\
-            width: 100%;\
-            height: 100%;\
-            background-color: var(--bg-color);\
-            font-family: 'Arial', sans-serif;\
-            overflow: hidden;\
-            display: flex;\
-            justify-content: center;\
-            align-items: center;\
-        \}\
-\
-        /* \uc0\u23553 \u38754 \u65306 \u35299 \u20915 \u27983 \u35272 \u22120 \u33258 \u21160 \u25773 \u25918 \u38480 \u21046  */\
-        #overlay \{\
-            position: fixed;\
-            top: 0; left: 0; width: 100%; height: 100%;\
-            background: #ff4757;\
-            display: flex;\
-            flex-direction: column;\
-            justify-content: center;\
-            align-items: center;\
-            z-index: 100;\
-            color: white;\
-            cursor: pointer;\
-            transition: opacity 0.8s;\
-        \}\
-\
-        .envelope-icon \{ font-size: 80px; margin-bottom: 20px; \}\
-\
-        .main-content \{\
-            text-align: center;\
-            display: none;\
-            opacity: 0;\
-            transition: opacity 1s;\
-        \}\
-\
-        /* \uc0\u34507 \u31957 \u23637 \u31034  */\
-        .cake-wrapper \{ position: relative; width: 300px; height: 250px; margin: 0 auto; \}\
-        .plate \{ position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 300px; height: 20px; background: #f1f2f6; border-radius: 50%; \}\
-        \
-        .cake-body \{\
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);\
-            width: 260px; height: 140px;\
-            background: linear-gradient(to bottom, var(--cake-color), #e67e22);\
-            border-radius: 10px 10px 40px 40px;\
-            z-index: 2; overflow: hidden;\
-        \}\
-\
-        .icing \{ position: absolute; top: 0; width: 100%; height: 40px; background: var(--icing-color); \}\
-        .drip \{ position: absolute; background: var(--icing-color); width: 40px; height: 60px; border-radius: 0 0 20px 20px; \}\
-        .drip:nth-child(1) \{ left: 0; height: 60px; \}\
-        .drip:nth-child(2) \{ left: 60px; height: 80px; \}\
-        .drip:nth-child(3) \{ left: 120px; height: 50px; \}\
-        .drip:nth-child(4) \{ left: 180px; height: 75px; \}\
-        .drip:nth-child(5) \{ right: 0; height: 55px; \}\
-\
-        .top-decoration \{ position: absolute; bottom: 160px; left: 50%; transform: translateX(-50%); width: 260px; height: 50px; z-index: 10; \}\
-        .strawberry \{ position: absolute; width: 35px; height: 45px; background: #ff4757; border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%; \}\
-        .s1 \{ left: 30px; transform: rotate(-15deg); \}\
-        .s2 \{ right: 30px; transform: rotate(15deg); \}\
-        .s3 \{ left: 50%; transform: translateX(-50%) scale(1.1); bottom: -10px; \}\
-\
-        .candle-container \{ position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); cursor: pointer; z-index: 20; \}\
-        .candle \{ width: 12px; height: 60px; background: linear-gradient(to right, #f1c40f, #e67e22); border-radius: 3px; \}\
-        .flame \{\
-            position: absolute; top: -25px; left: 50%; transform: translateX(-50%);\
-            width: 15px; height: 25px; background: orange; border-radius: 50% 50% 20% 20%;\
-            box-shadow: 0 0 20px orange; animation: flicker 0.6s infinite alternate;\
-        \}\
-\
-        @keyframes flicker \{ to \{ transform: translateX(-50%) scale(1.1); opacity: 0.8; \} \}\
-        \
-        .text-area \{ margin-top: 20px; color: #ff4757; \}\
-    </style>\
-</head>\
-<body>\
-\
-    <div id="overlay" onclick="startExperience()">\
-        <div class="envelope-icon">\uc0\u9993 \u65039 </div>\
-        <p>\uc0\u26377 \u19968 \u20221 \u26469 \u33258 \u36828 \u26041 \u30340 \u29983 \u26085 \u24778 \u21916 </p>\
-        <p>\uc0\u28857 \u20987 \u24320 \u21551 </p>\
-    </div>\
-\
-    <div class="main-content" id="mainContent">\
-        <div class="cake-wrapper">\
-            <div class="plate"></div>\
-            <div class="cake-body">\
-                <div class="icing"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>\
-            </div>\
-            <div class="top-decoration">\
-                <div class="strawberry s1"></div>\
-                <div class="strawberry s2"></div>\
-                <div class="strawberry s3"></div>\
-                <div class="candle-container" id="candleBtn">\
-                    <div class="candle"><div class="flame" id="flame"></div></div>\
-                </div>\
-            </div>\
-        </div>\
-        <div class="text-area">\
-            <h1>Happy Birthday!</h1>\
-            <p id="hintText">\uc0\u24555 \u21561 \u28781 \u34593 \u28891 \u35768 \u20010 \u24895 \u21543 \u65281 </p>\
-        </div>\
-    </div>\
-\
-    <audio id="bgAudio" loop src="bg_music.m4a"></audio>\
-    <audio id="wishAudio" src="voice_message.m4a"></audio>\
-\
-    <script>\
-        function startExperience() \{\
-            const overlay = document.getElementById('overlay');\
-            const mainContent = document.getElementById('mainContent');\
-            const bgAudio = document.getElementById('bgAudio');\
-\
-            overlay.style.opacity = '0';\
-            setTimeout(() => \{\
-                overlay.style.display = 'none';\
-                mainContent.style.display = 'block';\
-                setTimeout(() => mainContent.style.opacity = '1', 50);\
-                bgAudio.play().catch(e => console.log("Audio play blocked", e));\
-            \}, 800);\
-        \}\
-\
-        const candleBtn = document.getElementById('candleBtn');\
-        const flame = document.getElementById('flame');\
-        const wishAudio = document.getElementById('wishAudio');\
-        const bgAudio = document.getElementById('bgAudio');\
-        let blown = false;\
-\
-        candleBtn.addEventListener('click', () => \{\
-            if (!blown) \{\
-                flame.style.display = 'none';\
-                blown = true;\
-                bgAudio.volume = 0.2; // \uc0\u35843 \u23567 \u32972 \u26223 \u38899 \
-                wishAudio.play();     // \uc0\u25773 \u25918 \u35821 \u38899 \
-                document.getElementById('hintText').innerText = "\uc0\u24895 \u26395 \u19968 \u23450 \u20250 \u23454 \u29616 \u65281 \u55356 \u57217 ";\
-            \}\
-        \});\
-    </script>\
-</body>\
-</html>}
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 封面：解决浏览器自动播放限制 */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #ff4757;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            color: white;
+            cursor: pointer;
+            transition: opacity 0.8s;
+        }
+
+        .envelope-icon { font-size: 80px; margin-bottom: 20px; }
+
+        .main-content {
+            text-align: center;
+            display: none;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        /* 蛋糕展示 */
+        .cake-wrapper { position: relative; width: 300px; height: 250px; margin: 0 auto; }
+        .plate { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); width: 300px; height: 20px; background: #f1f2f6; border-radius: 50%; }
+        
+        .cake-body {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 260px; height: 140px;
+            background: linear-gradient(to bottom, var(--cake-color), #e67e22);
+            border-radius: 10px 10px 40px 40px;
+            z-index: 2; overflow: hidden;
+        }
+
+        .icing { position: absolute; top: 0; width: 100%; height: 40px; background: var(--icing-color); }
+        .drip { position: absolute; background: var(--icing-color); width: 40px; height: 60px; border-radius: 0 0 20px 20px; }
+        .drip:nth-child(1) { left: 0; height: 60px; }
+        .drip:nth-child(2) { left: 60px; height: 80px; }
+        .drip:nth-child(3) { left: 120px; height: 50px; }
+        .drip:nth-child(4) { left: 180px; height: 75px; }
+        .drip:nth-child(5) { right: 0; height: 55px; }
+
+        .top-decoration { position: absolute; bottom: 160px; left: 50%; transform: translateX(-50%); width: 260px; height: 50px; z-index: 10; }
+        .strawberry { position: absolute; width: 35px; height: 45px; background: #ff4757; border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%; }
+        .s1 { left: 30px; transform: rotate(-15deg); }
+        .s2 { right: 30px; transform: rotate(15deg); }
+        .s3 { left: 50%; transform: translateX(-50%) scale(1.1); bottom: -10px; }
+
+        .candle-container { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); cursor: pointer; z-index: 20; }
+        .candle { width: 12px; height: 60px; background: linear-gradient(to right, #f1c40f, #e67e22); border-radius: 3px; }
+        .flame {
+            position: absolute; top: -25px; left: 50%; transform: translateX(-50%);
+            width: 15px; height: 25px; background: orange; border-radius: 50% 50% 20% 20%;
+            box-shadow: 0 0 20px orange; animation: flicker 0.6s infinite alternate;
+        }
+
+        @keyframes flicker { to { transform: translateX(-50%) scale(1.1); opacity: 0.8; } }
+        
+        .text-area { margin-top: 20px; color: #ff4757; }
+    </style>
+</head>
+<body>
+
+    <div id="overlay" onclick="startExperience()">
+        <div class="envelope-icon">✉️</div>
+        <p>有一份来自远方的生日惊喜</p>
+        <p>点击开启</p>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <div class="cake-wrapper">
+            <div class="plate"></div>
+            <div class="cake-body">
+                <div class="icing"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+            </div>
+            <div class="top-decoration">
+                <div class="strawberry s1"></div>
+                <div class="strawberry s2"></div>
+                <div class="strawberry s3"></div>
+                <div class="candle-container" id="candleBtn">
+                    <div class="candle"><div class="flame" id="flame"></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-area">
+            <h1>Happy Birthday!</h1>
+            <p id="hintText">快吹灭蜡烛许个愿吧！</p>
+        </div>
+    </div>
+
+    <audio id="bgAudio" loop src="bg_music.m4a"></audio>
+    <audio id="wishAudio" src="voice_message.m4a"></audio>
+
+    <script>
+        function startExperience() {
+            const overlay = document.getElementById('overlay');
+            const mainContent = document.getElementById('mainContent');
+            const bgAudio = document.getElementById('bgAudio');
+
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+                mainContent.style.display = 'block';
+                setTimeout(() => mainContent.style.opacity = '1', 50);
+                bgAudio.play().catch(e => console.log("Audio play blocked", e));
+            }, 800);
+        }
+
+        const candleBtn = document.getElementById('candleBtn');
+        const flame = document.getElementById('flame');
+        const wishAudio = document.getElementById('wishAudio');
+        const bgAudio = document.getElementById('bgAudio');
+        let blown = false;
+
+        candleBtn.addEventListener('click', () => {
+            if (!blown) {
+                flame.style.display = 'none';
+                blown = true;
+                bgAudio.volume = 0.2; // 调小背景音
+                wishAudio.play();     // 播放语音
+                document.getElementById('hintText').innerText = "愿望一定会实现！🎁";
+            }
+        });
+    </script>
+</body>
+</html>
